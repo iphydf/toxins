@@ -39,7 +39,7 @@ Tox *create_tox(void)
         long fsize = ftell(f);
         fseek(f, 0, SEEK_SET);
 
-        uint8_t *savedata = malloc(fsize);
+        uint8_t *savedata = (uint8_t *)malloc(fsize);
 
         if (savedata == NULL) {
             return NULL;
@@ -69,7 +69,7 @@ Tox *create_tox(void)
 void update_savedata_file(const Tox *tox)
 {
     size_t size = tox_get_savedata_size(tox);
-    uint8_t *savedata = malloc(size);
+    uint8_t *savedata = (uint8_t *)malloc(size);
 
     if (savedata == NULL) {
         fprintf(stderr, "Failed to allocate memory for save data\n");
